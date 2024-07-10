@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="et">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vichy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;600&family=Roboto:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #es-vichy.es-vichy {
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 0;
+        color: #2b2a29;
+        font-family: 'League Spartan', sans-serif;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 1.2;
+        max-width: 850px;
+        overflow: hidden;
+      }
+      #es-vichy.es-vichy * {
+        box-sizing: border-box;
+      }
+      #es-vichy.es-vichy h2,
+      #es-vichy.es-vichy h3,
+      #es-vichy.es-vichy h4,
+      #es-vichy.es-vichy h5 {
+        color: #111;
+        font-family: 'League Spartan', sans-serif;
+      }
+      #es-vichy.es-vichy .es-kv {
+        background: #fff;
+      }
+      #es-vichy.es-vichy .es-kv__images {
+        height: 560px;
+        background: url('assets/packshot.png') top/cover no-repeat;
+        background-size: contain;
+      }
+      #es-vichy.es-vichy .es-kv__recommendation {
+        display: flex;
+        flex-direction: column;
+      }
+      #es-vichy.es-vichy .es-kv__disclaimer {
+        padding: 7px 10px 0 10px;
+        font-size: 9px;
+        margin: 0 auto;
+        max-width: 362px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-kv__header {
+        padding: 120px 10px 0 10px;
+        font-size: 16px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-kv__animated-item {
+        height: 350px;
+      }
+      #es-vichy.es-vichy .es-kv__animated-items {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        -webkit-animation: slidedown 0.6s ease forwards;
+        animation: slidedown 0.6s ease forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;
+      }
+      #es-vichy.es-vichy .es-kv__photo {
+        position: relative;
+      }
+      #es-vichy.es-vichy .es-kv__img {
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+      }
+      #es-vichy.es-vichy .es-kv__img--photo {
+        width: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+      }
+      #es-vichy.es-vichy .es-kv__content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
+        padding-top: 20px;
+        background: url('assets/photo.jpg') center/cover no-repeat;
+        min-height: 535px;
+      }
+      #es-vichy.es-vichy .es-kv__title {
+        padding: 5px 24px;
+        color: #39b5b3;
+        font-size: 26px;
+        text-transform: uppercase;
+        text-align: right;
+        opacity: 0;
+        -webkit-animation: slideright 0.6s ease forwards;
+        animation: slideright 0.6s ease forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;
+      }
+      #es-vichy.es-vichy .es-kv__subtitle {
+        padding: 5px 24px;
+        font-weight: bold;
+        -webkit-animation: slideright 0.6s ease forwards;
+        animation: slideright 0.6s ease forwards;
+        -webkit-animation-delay: 0.3s;
+        animation-delay: 0.3s;
+      }
+      #es-vichy.es-vichy .es-info {
+        margin: 0 auto;
+        margin-bottom: 32px;
+        padding: 32px 16px;
+        max-width: 730px;
+      }
+      #es-vichy.es-vichy .es-info__border {
+        position: relative;
+        margin-bottom: 32px;
+        padding: 24px 16px;
+      }
+      #es-vichy.es-vichy .es-info__border::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: url('assets/border-1.png');
+      }
+      #es-vichy.es-vichy .es-info__border::after {
+        position: absolute;
+        right: 0;
+        content: url('assets/border-2.png');
+      }
+      #es-vichy.es-vichy .es-info__title {
+        margin-bottom: 32px;
+        font-weight: normal;
+        font-size: 23px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      #es-vichy.es-vichy .es-info__desc {
+        font-size: 16px;
+        text-align: center;
+        line-height: 1.4;
+      }
+      #es-vichy.es-vichy .es-info__desc strong {
+        text-transform: uppercase;
+      }
+      #es-vichy.es-vichy .es-info__text {
+        font-weight: 700;
+        font-size: 15px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-info__img {
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+      }
+      #es-vichy.es-vichy .es-info__features {
+        margin: 0 -8px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: flex-start;
+      }
+      #es-vichy.es-vichy .es-info__single {
+        width: 250px;
+        padding: 0 8px;
+      }
+      #es-vichy.es-vichy .es-info__single:not(:last-child) {
+        margin-bottom: 32px;
+      }
+      #es-vichy.es-vichy .es-info__icon {
+        margin-bottom: 16px;
+      }
+      #es-vichy.es-vichy .es-use {
+        padding: 0 16px;
+        background: url('assets/bg-1.png') no-repeat;
+        background-position: 82% bottom;
+        min-height: 891px;
+      }
+      #es-vichy.es-vichy .es-use__content {
+        margin: 50px auto 0 40px;
+        max-width: 730px;
+      }
+      #es-vichy.es-vichy .es-use__title {
+        padding-bottom: 32px;
+        font-weight: 700;
+        font-size: 22px;
+        text-transform: uppercase;
+      }
+      #es-vichy.es-vichy .es-use__list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      #es-vichy.es-vichy .es-use__item {
+        position: relative;
+        margin-bottom: 16px;
+        padding-left: 24px;
+        font-weight: 300;
+        font-size: 17px;
+      }
+      #es-vichy.es-vichy .es-use__item::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #39b5b3;
+        content: '●';
+      }
+      #es-vichy.es-vichy .es-banner {
+        margin-bottom: 64px;
+      }
+      #es-vichy.es-vichy .es-banner__border {
+        margin-bottom: 16px;
+        padding: 32px 16px;
+        background: linear-gradient(45deg, #469594, #50bfbd);
+      }
+      #es-vichy.es-vichy .es-banner__title {
+        margin-bottom: 10px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        text-align: center;
+        line-height: 1.4;
+      }
+      #es-vichy.es-vichy .es-banner__container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+      #es-vichy.es-vichy .es-banner__single {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0 16px;
+      }
+      #es-vichy.es-vichy .es-banner__single:not(:last-child) {
+        margin-bottom: 24px;
+      }
+      #es-vichy.es-vichy .es-banner__text {
+        margin-top: 5px;
+        color: #fff;
+        font-weight: 500;
+        font-size: 12px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-banner__text--number {
+        margin-bottom: 0;
+        font-size: 40px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+      #es-vichy.es-vichy .es-banner__text span {
+        position: relative;
+        top: -8px;
+        font-weight: 700;
+        font-size: 30px;
+      }
+      #es-vichy.es-vichy .es-ingr {
+        margin-bottom: 64px;
+        padding: 0 16px;
+      }
+      #es-vichy.es-vichy .es-ingr__title {
+        margin-bottom: 32px;
+        font-weight: 700;
+        font-size: 22px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      #es-vichy.es-vichy .es-ingr__container {
+        margin: 0 -24px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0 12px;
+      }
+      #es-vichy.es-vichy .es-ingr__single {
+        padding: 0 12px;
+      }
+      #es-vichy.es-vichy .es-ingr__single:not(:last-child) {
+        margin-bottom: 32px;
+      }
+      #es-vichy.es-vichy .es-ingr__image {
+        position: relative;
+        margin-bottom: 24px;
+      }
+      #es-vichy.es-vichy .es-ingr__img {
+        width: 100%;
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+      }
+      #es-vichy.es-vichy .es-ingr__text {
+        font-size: 13px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-ingr__label {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        padding: 10px 3px;
+        font-weight: 700;
+        font-size: 12px;
+        margin: 0;
+        color: inherit;
+        font-family: inherit;
+        line-height: inherit;
+        background: rgba(255, 255, 255, 0.66);
+        transform: translate(-50%, -50%);
+        text-align: center;
+        text-transform: uppercase;
+      }
+      #es-vichy.es-vichy .es-benefits {
+        padding: 0 16px;
+        background: url('assets/bg-3.jpg') no-repeat;
+        background-position: 28% bottom;
+        min-height: 930px;
+      }
+      #es-vichy.es-vichy .es-benefits__title {
+        margin-bottom: 70px;
+        font-weight: 700;
+        font-size: 26px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-benefits__container {
+        margin: 0 -16px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 0 8px;
+      }
+      #es-vichy.es-vichy .es-benefits__single {
+        width: 200px;
+        padding: 0 8px;
+      }
+      #es-vichy.es-vichy .es-benefits__single:not(:last-child) {
+        margin-bottom: 32px;
+      }
+      #es-vichy.es-vichy .es-benefits__img {
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+      }
+      #es-vichy.es-vichy .es-benefits__icon {
+        margin-bottom: 16px;
+      }
+      #es-vichy.es-vichy .es-benefits__text {
+        font-size: 17px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-cross {
+        padding: 0 16px;
+      }
+      #es-vichy.es-vichy .es-cross__title {
+        margin-bottom: 40px;
+        font-weight: 700;
+        font-size: 22px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-cross__container {
+        margin: 0 -16px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 8px;
+        flex-flow: column;
+      }
+      #es-vichy.es-vichy .es-cross__photo--desktop {
+        display: none;
+      }
+      #es-vichy.es-vichy .es-cross__packshot {
+        position: relative;
+        z-index: 1;
+      }
+      #es-vichy.es-vichy .es-cross__img {
+        margin: 0 auto;
+        display: block;
+        max-width: 100%;
+      }
+      #es-vichy.es-vichy .es-cross__packshot--1 img {
+        height: 350px;
+      }
+      #es-vichy.es-vichy .es-cross__single {
+        margin-bottom: 32px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 8px;
+        max-width: 250px;
+        flex-flow: column;
+      }
+      #es-vichy.es-vichy .es-cross__single:hover .es-cross__icon {
+        transform: scale(1.2);
+      }
+      #es-vichy.es-vichy .es-cross__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-flow: column;
+        flex-grow: 1;
+      }
+      #es-vichy.es-vichy .es-cross__subtitle {
+        margin-bottom: 16px;
+        font-weight: 300;
+        font-size: 17px;
+        text-align: center;
+        text-transform: uppercase;
+      }
+      #es-vichy.es-vichy .es-cross__subtitle strong {
+        display: block;
+      }
+      #es-vichy.es-vichy .es-cross__text {
+        margin-bottom: 16px;
+        font-weight: 300;
+        font-size: 15px;
+        text-align: center;
+      }
+      #es-vichy.es-vichy .es-cross__link {
+        margin-bottom: 16px;
+        border: 1px solid #0079ad;
+        padding: 6px 24px;
+        color: #fff;
+        font-weight: 700;
+        font-size: 10px;
+        background: #0079ad;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: all 0.3s ease;
+      }
+      #es-vichy.es-vichy .es-cross__link:hover {
+        color: #0079ad;
+        background: #fff;
+      }
+      @media screen and (min-width: 400px) {
+        #es-vichy.es-vichy .es-kv__header {
+          padding: 180px 10px 0 10px;
+        }
+        #es-vichy.es-vichy .es-benefits__title {
+          margin: 0 auto;
+          margin-bottom: 70px;
+          max-width: 300px;
+        }
+      }
+      @media screen and (min-width: 500px) {
+        #es-vichy.es-vichy .es-benefits {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 858px;
+        }
+        #es-vichy.es-vichy .es-benefits__content {
+          margin-top: -200px;
+          margin-left: -62px;
+          max-width: 400px;
+        }
+        #es-vichy.es-vichy .es-benefits__container {
+          flex-direction: row;
+          flex-wrap: wrap;
+          align-items: flex-start;
+        }
+      }
+      @media screen and (min-width: 560px) {
+        #es-vichy.es-vichy .es-cross__container {
+          flex-wrap: wrap;
+          align-items: stretch;
+          flex-flow: row;
+        }
+        #es-vichy.es-vichy .es-cross__photo--desktop {
+          display: block;
+        }
+        #es-vichy.es-vichy .es-cross__packshot {
+          display: none;
+        }
+        #es-vichy.es-vichy .es-benefits {
+          justify-content: flex-start;
+        }
+        #es-vichy.es-vichy .es-benefits__content {
+          margin-left: 5%;
+        }
+        #es-vichy.es-vichy .es-ingr__label {
+          padding: 12px 12px;
+          font-size: 17px;
+        }
+      }
+      @media screen and (min-width: 720px) {
+        #es-vichy.es-vichy .es-kv {
+          display: flex;
+        }
+        #es-vichy.es-vichy .es-kv__images {
+          height: auto;
+          display: flex;
+          justify-content: space-between;
+          flex-flow: column;
+          flex: 1;
+          flex-basis: 50%;
+          background-size: cover;
+        }
+        #es-vichy.es-vichy .es-kv__content {
+          justify-content: flex-end;
+          align-items: flex-start;
+        }
+        #es-vichy.es-vichy .es-kv__subtitle {
+          padding-bottom: 0;
+          font-size: 20px;
+        }
+        #es-vichy.es-vichy .es-kv__title {
+          padding-top: 0;
+          text-align: left;
+        }
+        #es-vichy.es-vichy .es-kv__photo {
+          order: -1;
+          flex: 1;
+          flex-basis: 50%;
+        }
+        #es-vichy.es-vichy .es-ingr__title {
+          margin: 0 auto;
+          margin-bottom: 32px;
+          max-width: 300px;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        #es-vichy.es-vichy .es-kv__header {
+          position: relative;
+          z-index: 1;
+          padding: 150px 60px 0 60px;
+          font-size: 18px;
+          max-width: 500px;
+        }
+        #es-vichy.es-vichy .es-kv__animated-item {
+          margin-top: 20px;
+        }
+        #es-vichy.es-vichy .es-info__border {
+          margin-bottom: 75px;
+        }
+        #es-vichy.es-vichy .es-info__features {
+          justify-content: space-between;
+        }
+        #es-vichy.es-vichy .es-info__single {
+          width: 23%;
+        }
+        #es-vichy.es-vichy .es-use {
+          margin-top: -130px;
+          margin-bottom: 0px;
+          display: flex;
+          align-items: center;
+          background-position: -250px 50%;
+          background-size: contain;
+          min-height: 763px;
+        }
+        #es-vichy.es-vichy .es-use__content {
+          margin-top: 115px;
+          margin-right: 25px;
+          margin-left: auto;
+          padding-top: 0;
+          max-width: 300px;
+        }
+        #es-vichy.es-vichy .es-use__title {
+          font-size: 26px;
+        }
+        #es-vichy.es-vichy .es-banner {
+          margin-bottom: 100px;
+          margin-left: 2%;
+          display: flex;
+          align-items: center;
+          background: url('assets/bg-2.png') no-repeat right center;
+          min-height: 442px;
+        }
+        #es-vichy.es-vichy .es-banner__content {
+          max-width: 590px;
+        }
+        #es-vichy.es-vichy .es-banner__container {
+          flex-direction: row;
+          justify-content: space-around;
+        }
+        #es-vichy.es-vichy .es-banner__border {
+          width: 400px;
+        }
+        #es-vichy.es-vichy .es-banner__single:not(:last-child) {
+          margin-bottom: 0;
+        }
+        #es-vichy.es-vichy .es-ingr {
+          margin-bottom: 130px;
+        }
+        #es-vichy.es-vichy .es-ingr__title {
+          margin-bottom: 40px;
+          font-size: 26px;
+          max-width: 450px;
+        }
+        #es-vichy.es-vichy .es-ingr__label {
+          padding: 12px 12px;
+          font-size: 22px;
+        }
+        #es-vichy.es-vichy .es-ingr__container {
+          margin: 0 auto;
+          justify-content: space-between;
+          padding: 0;
+          max-width: 730px;
+        }
+        #es-vichy.es-vichy .es-ingr__text {
+          margin: 0 auto;
+          width: 415px;
+          font-weight: 300;
+          font-size: 15px;
+        }
+        #es-vichy.es-vichy .es-benefits__content {
+          margin-left: 10%;
+        }
+      }
+      @media screen and (min-width: 920px) {
+        #es-vichy.es-vichy .es-kv__title {
+          margin-top: 2px;
+          font-size: 30px;
+          line-height: 0.9;
+        }
+        #es-vichy.es-vichy .es-kv__subtitle {
+          font-size: 24px;
+        }
+        #es-vichy.es-vichy .es-banner {
+          margin-left: 2%;
+        }
+        #es-vichy.es-vichy .es-banner__border {
+          width: 410px;
+        }
+        #es-vichy.es-vichy .es-banner__title {
+          font-size: 20px;
+        }
+        #es-vichy.es-vichy .es-banner__text {
+          font-size: 20px;
+        }
+        #es-vichy.es-vichy .es-banner__text--number {
+          font-size: 56px;
+        }
+        #es-vichy.es-vichy .es-benefits__title {
+          margin-bottom: 45px;
+        }
+        #es-vichy.es-vichy .es-benefits__content {
+          margin-left: 13%;
+        }
+        #es-vichy.es-vichy .es-use {
+          background-position: -110px 50%;
+        }
+        #es-vichy.es-vichy .es-cross__title {
+          margin-bottom: 60px;
+          font-size: 26px;
+        }
+        #es-vichy.es-vichy .es-cross__container {
+          justify-content: space-around;
+        }
+        #es-vichy.es-vichy .es-cross__single {
+          max-width: 260px;
+        }
+        #es-vichy.es-vichy .es-cross__single--second {
+          margin-left: -20px;
+          max-width: 231px;
+        }
+        #es-vichy.es-vichy .es-cross__single--third {
+          margin-right: 50px;
+        }
+        #es-vichy.es-vichy .es-ingr__label {
+          width: 404px;
+          font-size: 24px;
+        }
+      }
+
+      @-webkit-keyframes slidedown {
+        from {
+          opacity: 0;
+          transform: translateY(-32px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slidedown {
+        from {
+          opacity: 0;
+          transform: translateY(-32px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @-webkit-keyframes slideright {
+        from {
+          opacity: 0.3;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideright {
+        from {
+          opacity: 0.3;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      /*# sourceMappingURL=style.css.map */
+    </style>
+  </head>
+
+  <body>
+    <div class="es-vichy" id="es-vichy">
+      <section class="es-kv">
+        <div class="es-kv__images">
+          <div class="es-kv__packshot">
+            <div class="es-kv__header"></div>
+            <div class="es-kv__animated-items">
+              <img
+                src="assets/bottle.png"
+                alt=""
+                class="es-kv__animated-item"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="es-kv__photo">
+          <div class="es-kv__content">
+            <span class="es-kv__subtitle">DERMATOLOGAI PATVIRTINA</span>
+            <h2 class="es-kv__title">
+              INTENSYVŲ PRAKAITAVIMĄ <br />
+              GALIMA KONTROLIUOTI
+            </h2>
+          </div>
+        </div>
+      </section>
+
+      <section class="es-info">
+        <div class="es-info__border">
+          <h3 class="es-info__title">VARGINA INTENSYVUS PRAKAITAVIMAS?</h3>
+          <p class="es-info__desc">
+            Atraskite VICHY dažniausiai perkamą priemonę – rutulinį
+            antiperspirantą, kuris reguliuoja intensyvų prakaitavimą ir suteikia
+            stiprų gaivumo jausmą net 48 valandas po naudojimo! Veiksmingumas
+            patvirtintas prižiūrint dermatologams.
+          </p>
+        </div>
+        <div class="es-info__features">
+          <div class="es-info__single">
+            <div class="es-info__icon">
+              <img src="assets/check.png" class="es-info__img" alt="" />
+            </div>
+            <p class="es-info__text">
+              Užtikrina ilgalaikę apsaugą nuo prakaitavimo – net iki 48 valandų
+            </p>
+          </div>
+          <div class="es-info__single">
+            <div class="es-info__icon">
+              <img src="assets/check.png" class="es-info__img" alt="" />
+            </div>
+            <p class="es-info__text">Hipoalerginė <br />formulė</p>
+          </div>
+          <div class="es-info__single">
+            <div class="es-info__icon">
+              <img src="assets/check.png" class="es-info__img" alt="" />
+            </div>
+            <p class="es-info__text">
+              Lengva kvėpuojanti tekstūra, gaivus gėlių kvapas
+            </p>
+          </div>
+          <div class="es-info__single">
+            <div class="es-info__icon">
+              <img src="assets/check.png" class="es-info__img" alt="" />
+            </div>
+            <p class="es-info__text">Nepalieka ant odos lipnaus sluoksnio</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="es-use">
+        <div class="es-use__content">
+          <h3 class="es-use__title">NAUDOKITE, JEI</h3>
+          <ul class="es-use__list">
+            <li class="es-use__item">Vargina intensyvus prakaitavimas</li>
+            <li class="es-use__item">
+              Norite pašalinti nemalonų prakaito kvapą
+            </li>
+            <li class="es-use__item">
+              Ieškote didelį efektyvumą ir optimalią toleranciją užtikrinančios
+              sudėties formulės
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="es-banner">
+        <div class="es-banner__content">
+          <div class="es-banner__border">
+            <h3 class="es-banner__title">
+              VEIKSMINGUMAS PATVIRTINTAS <br />
+              PRIŽIŪRINT DERMATOLOGAMS
+            </h3>
+            <div class="es-banner__container">
+              <div class="es-banner__single">
+                <p class="es-banner__text es-banner__text--number">
+                  48 VALANDŲ
+                </p>
+                <p class="es-banner__text">APSAUGA NUO PRAKAITAVIMO</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="es-ingr">
+        <h3 class="es-ingr__title">
+          VEIKSMINGA FORMULĖ SU <br />
+          RAMINANČIA VEIKLIĄJA MEDŽIAGA
+        </h3>
+        <div class="es-ingr__container">
+          <div class="es-ingr__single">
+            <div class="es-ingr__image">
+              <p class="es-ingr__label">VICHY VULKANINIS VANDUO</p>
+              <img src="assets/ingr-1.png" alt="" class="es-ingr__img" />
+            </div>
+            <p class="es-ingr__text">
+              Sudėtyje yra 15 tinkamam odos funkcionavimui būtinų mineralų. Turi
+              raminamų ir odos apsauginį barjerą stiprinančių savybių.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="es-benefits">
+        <div class="es-benefits__content">
+          <h3 class="es-benefits__title">GERO TOLERAVIMO <br />GARANTIJA</h3>
+          <div class="es-benefits__container">
+            <div class="es-benefits__single">
+              <div class="es-benefits__icon">
+                <img src="assets/icon-1.png" alt="" class="es-benefits__img" />
+              </div>
+              <p class="es-benefits__text">
+                Hipoalerginė <br />
+                formulė
+              </p>
+            </div>
+            <div class="es-benefits__single">
+              <div class="es-benefits__icon">
+                <img src="assets/icon-2.png" alt="" class="es-benefits__img" />
+              </div>
+              <p class="es-benefits__text">
+                Išbandytas prižiūrint dermatologams
+              </p>
+            </div>
+            <div class="es-benefits__single">
+              <div class="es-benefits__icon">
+                <img src="assets/icon-3.png" alt="" class="es-benefits__img" />
+              </div>
+              <p class="es-benefits__text">Tinka jautriai odai</p>
+            </div>
+            <div class="es-benefits__single">
+              <div class="es-benefits__icon">
+                <img src="assets/icon-4.png" alt="" class="es-benefits__img" />
+              </div>
+              <p class="es-benefits__text">0% etilo alkoholio</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="es-cross">
+        <h3 class="es-cross__title">
+          TAIP PAT ATRASKITE MŪSŲ DAŽNIAUSIAI <br />PERKAMAS VEIDO PRIEŽIŪROS
+          PRIEMONES
+        </h3>
+        <div class="es-cross__photo es-cross__photo--desktop">
+          <img src="assets/packshots.png" alt="" class="es-cross__img" />
+        </div>
+        <div class="es-cross__container">
+          <div class="es-cross__single">
+            <div class="es-cross__packshot es-cross__packshot--1">
+              <img src="assets/cross-1.png" alt="" class="es-cross__img" />
+            </div>
+            <h4 class="es-cross__subtitle">
+              <strong>mineral 89 </strong>booster
+            </h4>
+            <div class="es-cross__wrapper">
+              <p class="es-cross__text">
+                Drėkinanti stiprinamoji priemonė su hialurono rūgštimi visiems
+                odos tipams.
+              </p>
+              <a href="#" target="_blank" class="es-cross__link">tutvu</a>
+            </div>
+          </div>
+          <div class="es-cross__single es-cross__single--second">
+            <div class="es-cross__packshot es-cross__packshot--2">
+              <img src="assets/cross-2.png" alt="" class="es-cross__img" />
+            </div>
+            <h4 class="es-cross__subtitle">
+              <strong>LIFTACTIV </strong>collagen specialist<br />
+            </h4>
+            <div class="es-cross__wrapper">
+              <p class="es-cross__text">
+                Dieninis kremas su vitaminu C ir peptidais, koreguojantis
+                kolageno praradimo odoje požymius.
+              </p>
+              <a href="#" target="_blank" class="es-cross__link">tutvu</a>
+            </div>
+          </div>
+          <div class="es-cross__single es-cross__single--third">
+            <div class="es-cross__packshot es-cross__packshot--3">
+              <img src="assets/cross-3.png" alt="" class="es-cross__img" />
+            </div>
+            <h4 class="es-cross__subtitle">
+              <strong>NEOVADIOL </strong> PO MENOPAUZĖS
+            </h4>
+            <div class="es-cross__wrapper">
+              <p class="es-cross__text">
+                Dieninis atkuriamasis kremas, apsaugantis nuo odos suglebimo.
+                Papildo prarastą lipidų sluoksnį.
+              </p>
+              <a href="#" target="_blank" class="es-cross__link">tutvu</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
